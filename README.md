@@ -1,7 +1,11 @@
 # UIBehaviorKit
+
 This library provides visual behaviors for UI elements in the Unity Engine.
 
-Examples of each are provided in the scene found in the 'Scenes' folder.
+This code is freely available to you via the [WTFPL License](https://en.wikipedia.org/wiki/WTFPL)
+
+##Examples
+Examples of each are provided in the scene UIBehaviors-Example.unity found in the 'Scenes' folder.
 
 ![alt text](http://www.slonersoft.com/images/uibehavior_example.gif "Examples of UIBehaviors in action.")
 
