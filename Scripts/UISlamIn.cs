@@ -56,7 +56,7 @@ public class UISlamIn : MonoBehaviour {
 
 	// Slam the UI text into place.
 	//
-	// time: how long should the slam take?
+	// time (optional): how long should the slam take?  Omit to use value set in the inspector.
 	public void Slam(float time = -1f)
 	{
 		if (time > 0f)

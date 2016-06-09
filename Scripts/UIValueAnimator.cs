@@ -1,4 +1,14 @@
-﻿using UnityEngine;
+﻿/************************************************************
+ * 
+ *                   UI Value Animator
+ *                 2016 Slonersoft Games
+ * 
+ * Place this on a Text element and call AnimateValue to change
+ * the value over time, "tallying" the result.
+ * 
+ ************************************************************/
+
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -46,11 +56,20 @@ public class UIValueAnimator : MonoBehaviour {
 		return result;
 	}
 
+	// Set the value of the text immediately without animating.
+	// 
+	// value: new value for the element.
+	// 
 	public void SetValue(int value)
 	{
 		element.text = "" + value;
 	}
 
+	// Animate toward a new value.
+	// 
+	// endVal: new value to animate toward.
+	// animTime (optional): time to take getting to endVal.  Omit to use value set in inspector.
+	// 
 	public void AnimateValue(int endVal, float animTime = -1.0f)
 	{
 		if (animTime > 0) {
