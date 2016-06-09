@@ -2,9 +2,15 @@
 
 This library provides visual behaviors for UI elements in the Unity Engine.
 
+#### Isn't this stuff already handled by Unity's animation system?
+
+Sure, but if you're like me, you'd rather control everything from code.  I find it frustrating dealing with Unity's animation system -- the overhead of animations & animators, and the ambiguity trying to decipher the current state an animation may be in.  This code also handles a lot of the legwork of allowing an action to be cut-off and redirected mid-animation.
+
+## License
+
 This code is freely available to you via the [WTFPL License](https://en.wikipedia.org/wiki/WTFPL)
 
-##Examples
+## Examples
 Examples of each are provided in the scene UIBehaviors-Example.unity found in the 'Scenes' folder.
 
 ![alt text](http://www.slonersoft.com/images/uibehavior_example.gif "Examples of UIBehaviors in action.")
