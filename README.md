@@ -1,4 +1,4 @@
-# UIBehavior
+# UIBehaviorKit
 This library provides visual behaviors for UI elements in the Unity Engine.
 
 Examples of each are provided in the scene found in the 'Scenes' folder.
