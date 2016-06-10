@@ -1602,6 +1602,7 @@ GameObject:
   - 222: {fileID: 1794781500}
   - 114: {fileID: 1794781499}
   - 114: {fileID: 1794781498}
+  - 114: {fileID: 1794781501}
   m_Layer: 5
   m_Name: Animated 1
   m_TagString: Untagged
@@ -1640,8 +1641,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animation: {fileID: 11400000, guid: 969c3cacb5e4f44779674dd9cf91a09d, type: 2}
   targets: []
-  from: 1
-  to: 0
+  from: {x: 1, y: 1, z: 1}
+  to: {x: 0.5, y: 0.5, z: 0.5}
 --- !u!114 &1794781499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1681,6 +1682,62 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1794781496}
+--- !u!114 &1794781501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1794781496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f56fadf31d6499780b308a4e51134a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animation: {fileID: 11400000, guid: 969c3cacb5e4f44779674dd9cf91a09d, type: 2}
+  targets: []
+  gradient:
+    key0:
+      serializedVersion: 2
+      rgba: 4294967295
+    key1:
+      serializedVersion: 2
+      rgba: 1761607679
+    key2:
+      serializedVersion: 2
+      rgba: 0
+    key3:
+      serializedVersion: 2
+      rgba: 0
+    key4:
+      serializedVersion: 2
+      rgba: 0
+    key5:
+      serializedVersion: 2
+      rgba: 0
+    key6:
+      serializedVersion: 2
+      rgba: 0
+    key7:
+      serializedVersion: 2
+      rgba: 0
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 55705
+    atime2: 65535
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 3
 --- !u!1 &1908131972
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,4 +28,4 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   animationScale: 1
-  looped: 0
+  looped: 1
