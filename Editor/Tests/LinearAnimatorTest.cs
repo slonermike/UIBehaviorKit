@@ -6,65 +6,53 @@ namespace UIBehaviourKit.Animators.Test {
 
     [TestFixture]
     public class LinearAnimatorTest {
-        private AnimationCurve curve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(1.0f, 1.0f));
-        private ISimpleAnimated animated;
-        private Linear animator;
+        private const float VerySmallValue = 0.00001f;
 
-        [SetUp]
-        public void SetUp() {
-            animated = Substitute.For<ISimpleAnimated>();
-            animator = new Linear(curve);
+        [Test]
+        public void NoScaleNoLoop() {
+            NoLoopTests(1.0f);
         }
 
         [Test]
-        public void ZeroOnStart() {
-            animator.Apply(animated);
-            animated.Received().Apply(0);
+        public void ScaleNoLoop() {
+            NoLoopTests(2.0f);
         }
 
         [Test]
-        public void HalfAtHalfTime() {
-            animator.Update(0.5f);
-            animator.Apply(animated);
-            animated.Received().Apply(0.5f);
+        public void NoScaleLoop() {
+            LoopTest(1.0f);
         }
 
         [Test]
-        public void OneAtEnd() {
-            animator.Update(1.0f);
-            animator.Apply(animated);
-            animated.Received().Apply(1.0f);
+        public void ScaleLoop() {
+            LoopTest(2.0f);
         }
 
-        [Test]
-        public void DontGoOutside() {
-            animator.Update(1.1f);
-            animator.Apply(animated);
-            animated.Received().Apply(1.0f);
+        private void NoLoopTests(float scale) {
+            DoTest(0, 0, scale, false);
+            DoTest(1.0f / scale, 0.5f, scale, false);
+            DoTest(2.0f / scale, 1.0f, scale, false);
         }
 
-        [Test]
-        public void Reset() {
-            animator.Update(1.1f);
-            animator.Reset();
-            animator.Apply(animated);
-            animated.Received().Apply(0);
+        private void LoopTest(float scale) {
+            DoTest(0, 0, scale, true);
+            DoTest(1.0f / scale, 0.5f, scale, true);
+            DoTest(2.0f / scale - VerySmallValue, 1.0f, scale, true);
+            DoTest(3.0f / scale, 0.5f, scale, true);
+            DoTest(4.0f / scale - VerySmallValue, 1.0f, scale, true);
         }
 
-        [Test]
-        public void Loop() {
-            animator = new Linear(new AnimationCurve(new Keyframe(0, 0), new Keyframe(2, 1)), true);
-            animator.Update(3.0f);
+        private void DoTest(float time, float expected, float scale, bool looped) {
+            ISimpleAnimated animated = Substitute.For<ISimpleAnimated>();
+            var animator = CreateLinear(scale, looped);
+            animator.Update(time);
             animator.Apply(animated);
-            animated.Received().Apply(0.5f);
+            animated.Received().Apply(expected);
         }
 
-        [Test]
-        public void Scale() {
-            animator = new Linear(new AnimationCurve(new Keyframe(0, 0), new Keyframe(2, 1)), false, 2.0f);
-            animator.Update(1.0f);
-            animator.Apply(animated);
-            animated.Received().Apply(1.0f);
+        private Linear CreateLinear(float scale, bool looped) {
+            var curve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(2.0f, 1.0f));
+            return new Linear(curve, looped, scale);
         }
     }
 }
