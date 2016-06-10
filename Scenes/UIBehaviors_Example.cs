@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UIBehaviourKit;
 
 public class UIBehaviors_Example : MonoBehaviour {
 	

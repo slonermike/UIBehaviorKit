@@ -16,85 +16,88 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-public class UIFadeAway : MonoBehaviour {
+namespace UIBehaviourKit {
 
-	[Tooltip("Rate at which to animate.")]
-	public AnimationCurve curve = AnimationCurve.Linear (0.0f, 0.0f, 1.0f, 1.0f);
+    public class UIFadeAway : MonoBehaviour {
 
-	[Tooltip("Size to fade away to.  1.0 = no change.  2.0 = double size.")]
-	public float fadeSize = 2.0f;
+    	[Tooltip("Rate at which to animate.")]
+    	public AnimationCurve curve = AnimationCurve.Linear (0.0f, 0.0f, 1.0f, 1.0f);
 
-	[Tooltip("Time over which to perform the fade.")]
-	public float fadeTime = 1.0f;
+    	[Tooltip("Size to fade away to.  1.0 = no change.  2.0 = double size.")]
+    	public float fadeSize = 2.0f;
 
-	[Tooltip("True to fade immediately on load, false to wait for script intervention.")]
-	public bool fadeImmediately = true;
+    	[Tooltip("Time over which to perform the fade.")]
+    	public float fadeTime = 1.0f;
 
-    float progressPct = 0.0f;
-    MaskableGraphic text;
+    	[Tooltip("True to fade immediately on load, false to wait for script intervention.")]
+    	public bool fadeImmediately = true;
 
-    Vector3 baseScale;
+        float progressPct = 0.0f;
+        MaskableGraphic text;
 
-    // Use this for initialization
-    void Start()
-    {
-        Initialize();
-		if (!fadeImmediately) {
-			Restore ();
-		}
-    }
+        Vector3 baseScale;
 
-	// Grab initial conditions for the graphic.
-	//
-    void Initialize()
-    {
-        if (text == null)
+        // Use this for initialization
+        void Start()
         {
-            text = GetComponent<MaskableGraphic>();
-            Fade(fadeTime);
-            baseScale = text.rectTransform.localScale;
+            Initialize();
+    		if (!fadeImmediately) {
+    			Restore ();
+    		}
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (progressPct < 1.0f)
+    	// Grab initial conditions for the graphic.
+    	//
+        void Initialize()
         {
-            progressPct = Mathf.Clamp01(progressPct + (Time.deltaTime / fadeTime));
-
-            float adjustedPct = curve.Evaluate(progressPct);
-
-            text.rectTransform.localScale = Vector3.Lerp(baseScale, baseScale * fadeSize, adjustedPct);
-            text.color = new Color(text.color.r, text.color.g, text.color.b, 1.0f - adjustedPct);
+            if (text == null)
+            {
+                text = GetComponent<MaskableGraphic>();
+                Fade(fadeTime);
+                baseScale = text.rectTransform.localScale;
+            }
         }
-    }
 
-	// Fade away.
-	//
-	// time: time in seconds to perform the fade.
-	//
-    public void Fade(float time = -1f)
-    {
-        Initialize();
+        // Update is called once per frame
+        void Update()
+        {
+            if (progressPct < 1.0f)
+            {
+                progressPct = Mathf.Clamp01(progressPct + (Time.deltaTime / fadeTime));
 
-        if (fadeTime > 0f)
-            fadeTime = time;
-        else
-            fadeTime = 0.5f;
+                float adjustedPct = curve.Evaluate(progressPct);
 
-        progressPct = 0.0f;
-        text.color = new Color(text.color.r, text.color.g, text.color.b, 0.0f);
-    }
+                text.rectTransform.localScale = Vector3.Lerp(baseScale, baseScale * fadeSize, adjustedPct);
+                text.color = new Color(text.color.r, text.color.g, text.color.b, 1.0f - adjustedPct);
+            }
+        }
 
-	// Restore the graphic to its initial size and full opacity.
-	//
-    public void Restore()
-    {
-        Initialize();
+    	// Fade away.
+    	//
+    	// time: time in seconds to perform the fade.
+    	//
+        public void Fade(float time = -1f)
+        {
+            Initialize();
 
-        progressPct = 1.0f;
-        text.rectTransform.localScale = baseScale;
-        text.color = new Color(text.color.r, text.color.g, text.color.b, 1.0f);
+            if (fadeTime > 0f)
+                fadeTime = time;
+            else
+                fadeTime = 0.5f;
+
+            progressPct = 0.0f;
+            text.color = new Color(text.color.r, text.color.g, text.color.b, 0.0f);
+        }
+
+    	// Restore the graphic to its initial size and full opacity.
+    	//
+        public void Restore()
+        {
+            Initialize();
+
+            progressPct = 1.0f;
+            text.rectTransform.localScale = baseScale;
+            text.color = new Color(text.color.r, text.color.g, text.color.b, 1.0f);
+        }
     }
 }
