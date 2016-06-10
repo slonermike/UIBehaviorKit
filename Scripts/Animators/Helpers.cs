@@ -17,5 +17,15 @@ namespace UIBehaviourKit.Animators {
             }
             return Mathf.Clamp(currentTime, 0, animationTime);
         }
+
+        internal static AnimationCurve Invert(AnimationCurve curve) {
+            Assert.IsNotNull(curve, "curve can't be null");
+            AnimationCurve inverted = new AnimationCurve();
+            for (int i = curve.length - 1; i >= 0; --i) {
+                inverted.AddKey(curve.keys[i]);
+            }
+            Assert.IsTrue(curve.length == inverted.length);
+            return inverted;
+        }
     }
 }
