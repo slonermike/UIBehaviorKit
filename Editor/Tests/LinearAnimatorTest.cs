@@ -13,7 +13,7 @@ namespace UIBehaviourKit.Animators.Test {
         [SetUp]
         public void SetUp() {
             animated = Substitute.For<ISimpleAnimated>();
-            animator = new Linear(1.0f, curve);
+            animator = new Linear(curve);
         }
 
         [Test]
@@ -53,8 +53,8 @@ namespace UIBehaviourKit.Animators.Test {
 
         [Test]
         public void Loop() {
-            animator = new Linear(1.0f, curve, true);
-            animator.Update(1.5f);
+            animator = new Linear(new AnimationCurve(new Keyframe(0, 0), new Keyframe(2, 1)), true);
+            animator.Update(3.0f);
             animator.Apply(animated);
             animated.Received().Apply(0.5f);
         }

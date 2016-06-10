@@ -6,22 +6,27 @@ namespace UIBehaviourKit.Animators {
 
     public sealed class Linear : ISimpleAnimator {
         private AnimationCurve animationCurve;
+        private float animationScale;
         private float animationTime;
         private bool looped;
 
         private float currentTime;
 
-        public Linear(float animationTime, AnimationCurve animationCurve, bool looped = false)
+        public Linear(AnimationCurve animationCurve, bool looped = false, float animationScale = 1.0f)
         {
             Assert.IsNotNull(animationCurve, "animationCurve is null");
-            Assert.IsTrue(animationTime > 0, "fadeTime must be greater or equal zero");
+            Assert.IsTrue(animationScale != 0, "animationScale mustn't be zero");
             this.animationCurve = animationCurve;
-            this.animationTime = animationTime;
+            this.animationScale = animationScale;
             this.looped = looped;
+            this.animationTime = animationCurve.keys[animationCurve.length - 1].time;
         }
 
         public void Update(float deltaTime) {
-            currentTime += deltaTime;
+            currentTime += deltaTime * animationScale;
+            if (looped) {
+                currentTime %= animationTime;
+            }
         }
 
         public void Reset() {
@@ -29,14 +34,7 @@ namespace UIBehaviourKit.Animators {
         }
 
         public void Apply(ISimpleAnimated fadeAway) {
-            float delta = 0;
-            if (looped) {
-                delta = currentTime % animationTime;
-            }
-            else {
-                delta = Mathf.Clamp01(currentTime / animationTime);
-            }
-            fadeAway.Apply(animationCurve.Evaluate(delta));
+            fadeAway.Apply(animationCurve.Evaluate(Mathf.Clamp(currentTime, 0, animationTime)));
         }
 
     }
