@@ -58,5 +58,13 @@ namespace UIBehaviourKit.Animators.Test {
             animator.Apply(animated);
             animated.Received().Apply(0.5f);
         }
+
+        [Test]
+        public void Scale() {
+            animator = new Linear(new AnimationCurve(new Keyframe(0, 0), new Keyframe(2, 1)), false, 2.0f);
+            animator.Update(1.0f);
+            animator.Apply(animated);
+            animated.Received().Apply(1.0f);
+        }
     }
 }
