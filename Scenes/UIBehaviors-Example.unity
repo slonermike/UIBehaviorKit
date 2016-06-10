@@ -133,7 +133,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curve:
-    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0
@@ -151,6 +150,10 @@ MonoBehaviour:
   slamSize: 2
   slamTime: 0.5
   slamImmediately: 0
+  progressPct: 0
+  graphic: {fileID: 0}
+  rectTransform: {fileID: 0}
+  baseScale: {x: 0, y: 0, z: 0}
 --- !u!114 &112553630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,6 +302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd1157f543aed4678b2b469c3eb781bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elements: []
+  currentOpacity: 0
   changeRate: 0.75
   changeDelay: 2
   startOpacity: 0
@@ -500,6 +505,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd1157f543aed4678b2b469c3eb781bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elements: []
+  currentOpacity: 0
   changeRate: 0.75
   changeDelay: 1.5
   startOpacity: 0
@@ -551,6 +558,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd1157f543aed4678b2b469c3eb781bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elements: []
+  currentOpacity: 0
   changeRate: 0.75
   changeDelay: 0.5
   startOpacity: 0
@@ -602,6 +611,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3714b369397f4af2b3a507d1baed2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxMagnitude: 0
+  timeLeft_s: 0
+  timeTotal_s: 0
+  rectTransform: {fileID: 0}
+  rootPos: {x: 0, y: 0, z: 0}
 --- !u!114 &774538234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -768,7 +782,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curve:
-    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0
@@ -786,6 +799,9 @@ MonoBehaviour:
   fadeSize: 4
   fadeTime: 1
   fadeImmediately: 0
+  progressPct: 0
+  text: {fileID: 0}
+  baseScale: {x: 0, y: 0, z: 0}
 --- !u!1 &1335263719
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,6 +849,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd1157f543aed4678b2b469c3eb781bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elements: []
+  currentOpacity: 0
   changeRate: 0.75
   changeDelay: 1
   startOpacity: 0
@@ -1429,6 +1447,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74f700c4972ff4770a6a87f3ebed18c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animateTime: 1
+  finishTime: -1
+  curve:
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _element: {fileID: 0}
 --- !u!1 &1741348275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1638,49 +1664,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorPattern:
-    key0:
-      serializedVersion: 2
-      rgba: 4294964224
-    key1:
-      serializedVersion: 2
-      rgba: 4289746543
-    key2:
-      serializedVersion: 2
-      rgba: 16777215
-    key3:
-      serializedVersion: 2
-      rgba: 255
-    key4:
-      serializedVersion: 2
-      rgba: 255
-    key5:
-      serializedVersion: 2
-      rgba: 255
-    key6:
-      serializedVersion: 2
-      rgba: 0
-    key7:
-      serializedVersion: 2
-      rgba: 0
-    ctime0: 0
-    ctime1: 29298
-    ctime2: 65535
-    ctime3: 65535
-    ctime4: 65535
-    ctime5: 65535
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
+    key0: {}
+    key1: {}
+    key2: {}
+    key3: {}
+    key4: {}
+    key5: {}
+    key6: {}
+    key7: {}
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   pulseSpeed: 1
+  baseColor:
+    r: 0
+    g: 0
+    b: 0
+    a: 0
+  image: {fileID: 0}
+  fwd: 0
+  pct: 0
 --- !u!114 &1908131975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1767,6 +1769,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd1157f543aed4678b2b469c3eb781bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elements: []
+  currentOpacity: 0
   changeRate: 0.75
   changeDelay: 0
   startOpacity: 0
