@@ -19,7 +19,7 @@ namespace UIBehaviourKit.Animators {
             this.animationCurve = animationCurve;
             this.animationScale = animationScale;
             this.looped = looped;
-            this.animationTime = animationCurve.keys[animationCurve.length - 1].time;
+            this.animationTime = Helpers.GetAnimationTime(animationCurve);
         }
 
         public void Update(float deltaTime) {
