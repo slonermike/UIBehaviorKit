@@ -23,10 +23,7 @@ namespace UIBehaviourKit.Animators {
         }
 
         public void Update(float deltaTime) {
-            currentTime += deltaTime * animationScale;
-            if (looped) {
-                currentTime %= animationTime;
-            }
+            currentTime = Helpers.EvalTime(currentTime, animationTime, deltaTime, animationScale, looped);
         }
 
         public void Reset() {
@@ -34,7 +31,7 @@ namespace UIBehaviourKit.Animators {
         }
 
         public void Apply(ISimpleAnimated fadeAway) {
-            fadeAway.Apply(animationCurve.Evaluate(Mathf.Clamp(currentTime, 0, animationTime)));
+            fadeAway.Apply(animationCurve.Evaluate(currentTime));
         }
 
     }
