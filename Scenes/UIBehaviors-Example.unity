@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curve:
+    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0
@@ -150,10 +151,6 @@ MonoBehaviour:
   slamSize: 2
   slamTime: 0.5
   slamImmediately: 0
-  progressPct: 0
-  graphic: {fileID: 0}
-  rectTransform: {fileID: 0}
-  baseScale: {x: 0, y: 0, z: 0}
 --- !u!114 &112553630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,8 +299,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd1157f543aed4678b2b469c3eb781bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elements: []
-  currentOpacity: 0
   changeRate: 0.75
   changeDelay: 2
   startOpacity: 0
@@ -505,8 +500,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd1157f543aed4678b2b469c3eb781bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elements: []
-  currentOpacity: 0
   changeRate: 0.75
   changeDelay: 1.5
   startOpacity: 0
@@ -558,8 +551,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd1157f543aed4678b2b469c3eb781bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elements: []
-  currentOpacity: 0
   changeRate: 0.75
   changeDelay: 0.5
   startOpacity: 0
@@ -611,11 +602,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3714b369397f4af2b3a507d1baed2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMagnitude: 0
-  timeLeft_s: 0
-  timeTotal_s: 0
-  rectTransform: {fileID: 0}
-  rootPos: {x: 0, y: 0, z: 0}
 --- !u!114 &774538234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -782,6 +768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curve:
+    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 0
@@ -799,9 +786,6 @@ MonoBehaviour:
   fadeSize: 4
   fadeTime: 1
   fadeImmediately: 0
-  progressPct: 0
-  text: {fileID: 0}
-  baseScale: {x: 0, y: 0, z: 0}
 --- !u!1 &1335263719
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,8 +833,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd1157f543aed4678b2b469c3eb781bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elements: []
-  currentOpacity: 0
   changeRate: 0.75
   changeDelay: 1
   startOpacity: 0
@@ -1020,6 +1002,7 @@ RectTransform:
   - {fileID: 112553628}
   - {fileID: 1584191609}
   - {fileID: 1725545975}
+  - {fileID: 1794781497}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
@@ -1447,14 +1430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74f700c4972ff4770a6a87f3ebed18c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animateTime: 1
-  finishTime: -1
-  curve:
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _element: {fileID: 0}
 --- !u!1 &1741348275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1616,6 +1591,96 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1758915285}
+--- !u!1 &1794781496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1794781497}
+  - 222: {fileID: 1794781500}
+  - 114: {fileID: 1794781499}
+  - 114: {fileID: 1794781498}
+  m_Layer: 5
+  m_Name: Animated 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1794781497
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1794781496}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1448656527}
+  m_RootOrder: 6
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 137}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1794781498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1794781496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 733121555696b466a8e8afa2b350e103, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animation: {fileID: 11400000, guid: 969c3cacb5e4f44779674dd9cf91a09d, type: 2}
+  targets: []
+  from: 1
+  to: 0
+--- !u!114 &1794781499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1794781496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.99264705, g: 0.99264705, b: 0.99264705, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Animated 1
+--- !u!222 &1794781500
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1794781496}
 --- !u!1 &1908131972
 GameObject:
   m_ObjectHideFlags: 0
@@ -1664,25 +1729,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorPattern:
-    key0: {}
-    key1: {}
-    key2: {}
-    key3: {}
-    key4: {}
-    key5: {}
-    key6: {}
-    key7: {}
+    key0:
+      serializedVersion: 2
+      rgba: 4294967295
+    key1:
+      serializedVersion: 2
+      rgba: 4294967295
+    key2:
+      serializedVersion: 2
+      rgba: 0
+    key3:
+      serializedVersion: 2
+      rgba: 0
+    key4:
+      serializedVersion: 2
+      rgba: 0
+    key5:
+      serializedVersion: 2
+      rgba: 0
+    key6:
+      serializedVersion: 2
+      rgba: 0
+    key7:
+      serializedVersion: 2
+      rgba: 0
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   pulseSpeed: 1
-  baseColor:
-    r: 0
-    g: 0
-    b: 0
-    a: 0
-  image: {fileID: 0}
-  fwd: 0
-  pct: 0
 --- !u!114 &1908131975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1769,8 +1858,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd1157f543aed4678b2b469c3eb781bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elements: []
-  currentOpacity: 0
   changeRate: 0.75
   changeDelay: 0
   startOpacity: 0
