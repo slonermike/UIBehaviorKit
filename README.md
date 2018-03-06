@@ -13,6 +13,8 @@ This code is freely available to you via the [WTFPL License](https://en.wikipedi
 ## Examples
 Examples of each are provided in the scene UIBehaviors-Example.unity found in the 'Scenes' folder.
 
+TODO: Show examples in GIF format.
+
 ## Behaviors
 ### UIFadeAway
 Place this on a MaskableGraphic such as Image or Text and call Fade to make it fade away and grow.
