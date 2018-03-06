@@ -30,8 +30,10 @@ public class UIFadeAway : MonoBehaviour {
 	[Tooltip("True to fade immediately on load, false to wait for script intervention.")]
 	public bool fadeImmediately = true;
 
+	float startAlpha = 1f;
+	float endAlpha = 0f;
     float progressPct = 0.0f;
-    MaskableGraphic text;
+    MaskableGraphic element;
 
     Vector3 baseScale;
 
@@ -48,11 +50,11 @@ public class UIFadeAway : MonoBehaviour {
 	//
     void Initialize()
     {
-        if (text == null)
+        if (element == null)
         {
-            text = GetComponent<MaskableGraphic>();
+			element = GetComponent<MaskableGraphic>();
             Fade(fadeTime);
-            baseScale = text.rectTransform.localScale;
+            baseScale = element.rectTransform.localScale;
         }
     }
 
@@ -64,27 +66,34 @@ public class UIFadeAway : MonoBehaviour {
             progressPct = Mathf.Clamp01(progressPct + (Time.deltaTime / fadeTime));
 
             float adjustedPct = curve.Evaluate(progressPct);
+			float curAlpha = Mathf.Lerp (startAlpha, endAlpha, adjustedPct);
 
-            text.rectTransform.localScale = Vector3.Lerp(baseScale, baseScale * fadeSize, adjustedPct);
-            text.color = new Color(text.color.r, text.color.g, text.color.b, 1.0f - adjustedPct);
+            element.rectTransform.localScale = Vector3.Lerp(baseScale, baseScale * fadeSize, adjustedPct);
+			element.color = new Color(element.color.r, element.color.g, element.color.b, curAlpha);
         }
     }
 
-	// Fade away.
+	// Fade to another alpha level.
 	//
 	// time: time in seconds to perform the fade.
+	// goalPct: Opacity percentage [0,1] to fade to.
 	//
-    public void Fade(float time = -1f)
+	public void Fade(float time = -1f, float goalPct = 0f)
     {
         Initialize();
 
-        if (fadeTime > 0f)
+		if (time == 0) {
+			Restore ();
+			element.color = new Color(element.color.r, element.color.g, element.color.b, goalPct);
+			return;
+		} else if (fadeTime > 0f)
             fadeTime = time;
         else
             fadeTime = 0.5f;
 
         progressPct = 0.0f;
-        text.color = new Color(text.color.r, text.color.g, text.color.b, 0.0f);
+		startAlpha = element.color.a;
+		endAlpha = goalPct;
     }
 
 	// Restore the graphic to its initial size and full opacity.
@@ -94,7 +103,7 @@ public class UIFadeAway : MonoBehaviour {
         Initialize();
 
         progressPct = 1.0f;
-        text.rectTransform.localScale = baseScale;
-        text.color = new Color(text.color.r, text.color.g, text.color.b, 1.0f);
+        element.rectTransform.localScale = baseScale;
+        element.color = new Color(element.color.r, element.color.g, element.color.b, 1.0f);
     }
 }
